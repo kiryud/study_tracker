@@ -32,7 +32,7 @@
     - [O] .env
     - [O] init_env.py
     - [?] github secrets
-    - \[X] 하드 코딩
+    - [-] 하드 코딩
 
 
 ### CICD
@@ -54,7 +54,7 @@
     - [O] [material app](https://docs.flutter.dev/ui/widgets/material)
 
 - 미지원 OS : ios
-    - \[X] [cupertino app](https://docs.flutter.dev/ui/widgets/cupertino)
+    - [-] [cupertino app](https://docs.flutter.dev/ui/widgets/cupertino)
 
 #### tools
 
@@ -82,10 +82,10 @@
 - [O] monolithic architecture
     - user, backup service
 
-- \[X] modular monolithic architecture
+- [-] modular monolithic architecture
     - no reason for using
 
-- \[X] micro service architecture
+- [-] micro service architecture
     - no reason for using
 
 
