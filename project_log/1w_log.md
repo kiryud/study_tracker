@@ -18,7 +18,7 @@
 - 해당 앱은 flutter기반의 android app이다
     - 기본적으로 마테리얼 디자인을 기반으로 한다
 
-## 기존 계획 정리
+## 기존 기획 정리
 
 1. 기능 정의
     - 각 기능 페이지
@@ -29,7 +29,7 @@
 3. 임시 api서버 (login 기능)
     - [제작중인 백엔드 포폴](https://github.com/kiryud/test_project_kt_sb) 참조
 
-## 피드백 기반 추가 계획
+## 피드백 기반 추가 기획
 
 1. 기획서에 tech항목 추가
     - flutter (android material app)
