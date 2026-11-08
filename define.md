@@ -28,17 +28,17 @@
 ### 환경변수
 
 - 관리 방법
-    - [O] .env.example
-    - [O] .env
-    - [O] init_env.py
+    - [Y] .env.example
+    - [Y] .env
+    - [Y] init_env.py
     - [?] github secrets
-    - [-] 하드 코딩
+    - [N] 하드 코딩
 
 
 ### CICD
 
 - CI
-    - [O] github actions
+    - [Y] github actions
 
 - CD
     - [?] 
@@ -51,10 +51,10 @@
 #### platform
 
 - 지원 OS : android
-    - [O] [material app](https://docs.flutter.dev/ui/widgets/material)
+    - [Y] [material app](https://docs.flutter.dev/ui/widgets/material)
 
 - 미지원 OS : ios
-    - [-] [cupertino app](https://docs.flutter.dev/ui/widgets/cupertino)
+    - [N] [cupertino app](https://docs.flutter.dev/ui/widgets/cupertino)
 
 #### tools
 
@@ -79,13 +79,13 @@
 
 ### architecture
 
-- [O] monolithic architecture
+- [Y] monolithic architecture
     - user, backup service
 
-- [-] modular monolithic architecture
+- [N] modular monolithic architecture
     - no reason for using
 
-- [-] micro service architecture
+- [N] micro service architecture
     - no reason for using
 
 
@@ -97,7 +97,7 @@
 
 ### web application server
 
-- [O] spring boot
+- [Y] spring boot
     - JAVA
     - Gradle
 
@@ -107,7 +107,7 @@
 - [?] redis
     - no reason for using or not
 
-- [O] rdbms
+- [Y] rdbms
     - user service
     - backup data service
 
