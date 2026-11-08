@@ -182,11 +182,48 @@
     - 크기 기준은 dp기준 600, 840을 기점으로 스마트 폰 세로(compact), 태블릿 세로(medium), 태블릿 가로(expanded)를 대충 나누어 둔 상태이다 (스마트 폰 가로 어디감........?)
     - 이거 결국 스마트폰이건 태블릿이건 갤럭시 s 기준으로만 먼저 하는게 맞을듯? 거기에 이제 폰이냐 탭이냐 탭+냐 탭U냐가 갈리는거고 (내가 탭+ 쓴다고 사라진 일반 미지원하긴 좀 그래 내가 쓰는게 7+임)
 
+
 - [android에서 제시한 적응형 앱 품질 가이드라인](https://developer.android.com/docs/quality-guidelines/adaptive-app-quality?hl=ko&_gl=1*aydoa0*_up*MQ..*_ga*MjExMDIxMDE3Ni4xNzk0MTQ5NTE2*_ga_6HH9YJMN9M*czE3OTQxNDk1MTYkbzEkZzAkdDE3OTQxNDk1MTYkajYwJGwwJGgyMDM5MzE5NzYy)
 
 
 
 - [안드로이드와 ios에서의 움직임 차이...?](https://docs.flutter.dev/ui/adaptive-responsive/platform-adaptations) : ios 미지원이라 다행이다
+
+
+- 일단 dp dpi px 이야기
+    - dpi : 1 인치당 픽셀 수
+        - 초기 스마트폰 화면(HVGA 320×480)을 기준으로 안드로이드는 160dpi를 기준 밀도(mdpi)로 정함. 160 = 2⁵×5라 배율 계산이 편함.
+        - 생각해보면 이런거 나오기 전에도 터치폰을 내가 이미 쓰고있었네
+    - dp : 위의 첫 안드로이드 폰을 기준으로 1dp는 160dpi 화면에서의 1px로 정의됨
+        - 실제 픽셀과 별개로 앱 내부 화면의 좌표를 재정의 했다고 볼 수 있음
+            - 컴퓨터에서도 화면 배율을 통해 4k 모니터를 FHD처럼 사용할 수 있는데 그럼 dp는 FHD처럼 동작하는데 실제로는 1dp에 4px 들어있음 (2*2로)
+    - px : 화면의 진짜 픽셀 HD FHD QHD 4k 8k 등이 있다
+
+- `px = dp × (dpi / 160)`
+
+---
+
+px 해상도 정리
+
+이름|해상도
+---|---
+HD|1280×720
+FHD|1920×1080
+QHD|2560×1440
+4K (UHD)|3840×2160
+8K|7680×4320
+
+추가하면 좋은 내용
+
+용어/버킷|역할
+---|---
+mdpi (160)|배율 1x, 기준 밀도
+hdpi (240)|1.5x
+xhdpi (320)|2x
+xxhdpi (480)|3x
+xxxhdpi (640)|4x
+sp|글꼴 크기용 단위. dp와 같지만 사용자 글꼴 설정도 반영
+Flutter 논리 픽셀|dp와 같은 개념. devicePixelRatio가 실제 px와의 배율(= dpi/160)
 
 ---
 
