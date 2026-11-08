@@ -49,7 +49,7 @@
 ### flutter (for app)
 
 - 특정 버전의 완성시 build 및 packaging을 거쳐 artifact를 만드는 구조
-    - app의 경우 apk 혹은 abb형태로, 웹의 경우 정적 파일 기반의 directory로 만들어질 수 있다 (명령어를 통해 관리)
+    - app의 경우 apk 혹은 aab형태로, 웹의 경우 정적 파일 기반의 directory로 만들어질 수 있다 (명령어를 통해 관리)
 
 #### platform
 
@@ -72,7 +72,7 @@
 
 - [preview](https://docs.flutter.dev/tools/widget-previewer) : 특정 위젯의 미리보기
 
-- [device_preview](https://pub.dev/packages/device_preview) : (왜 다른게 아니라 이게 필요하다는건지 아직 모르겠지만 일단 링크 기록)
+- [device_preview](https://pub.dev/packages/device_preview) : 애뮬레이터 없이 화면분할 확인해보기
 
 #### test
 
@@ -163,7 +163,7 @@
 │           │           │
 │┌──────────┴──────────┐│
 ││ postgresSQL         ││
-││ [:5342]             ││
+││ [:5432]             ││
 │└─────────────────────┘│
 └───────────────────────┘
 ```
