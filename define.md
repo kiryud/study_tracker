@@ -189,10 +189,11 @@
 - [Y] rdbms
     - user service
     - backup data service
+        - SQLite기반의 file을 다뤄야하고 해당 파일에 대한 메타데이터를 가져야함
 
 - [?] nosql
     - no reason for using or not at backend server
-
+    - client가 SQLite기반으로 만든 file을 backend server에서 해석해야만 하는 이유가 아직 없어보임
 
 ---
 
