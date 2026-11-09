@@ -117,6 +117,8 @@
     - [flutter app의 dbms 선택 조언](https://docs.flutter.dev/data-and-backend/persistence/choose-a-database)
         - 놀랍게도 firebase는 rdbms로도 사용 가능하다고 한다 (postgresSQL을 내장시켰다고 한다)
 
+- [home widget](https://pub.dev/packages/home_widget) : 스마트폰 화면에 위젯 만들기
+
 #### local storage
 
 -  secure storage
