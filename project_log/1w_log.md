@@ -227,6 +227,97 @@ Flutter 논리 픽셀|dp와 같은 개념. devicePixelRatio가 실제 px와의 �
 
 ---
 
+- llm으로 대충 뽑은 영역 검증 필요
+
+```md
+### Android OS 및 Flutter 디스플레이 값 전달 체계
+
+#### Android OS 전달 기본값
+값|역할
+---|---
+`density` (`= devicePixelRatio`)|dp 1칸이 실제 px 몇 개인지 (기준 160dpi, 예: 3.0이면 1dp = 3px)
+`densityDpi`|실제 화면 밀도 (예: 480). `density × 160`과 같음
+`widthPixels` / `heightPixels`|실제 화면 물리 px 크기
+
+#### Android API & Flutter 매핑
+안드로이드 API|Flutter 대응|역할
+---|---|---
+`Configuration.screenWidthDp` / `screenHeightDp`|`MediaQuery.size.width` / `height`|현재 화면의 dp 폭·높이 (기기 회전 시 변경)
+`Configuration.smallestScreenWidthDp`|`min(width, height)`|짧은 변의 dp (회전해도 불변, sw600dp 등 분기 기준)
+`Resources.getDisplayMetrics()`|`MediaQueryData`|density, densityDpi, widthPixels 등을 담은 객체
+
+- **핵심 요약:**
+  - OS가 `px`와 `density`를 제공하고, `dp = px ÷ density`로 계산되므로 앱 개발자는 **계산된 dp 값만 기준**으로 사용하면 됨.
+  - **멀티윈도우(분할 화면) 주의점:** 기기 전체 물리 화면이 아니라 **"현재 내 앱 창이 할당받은 공간(Window Bounds)"** 기준으로 dp 값이 들어오므로, 반응형 레이아웃 분기 시 항상 앱에 할당된 너비를 기준으로 처리해야 함.
+```
+
+---
+
+# 화면 구성
+
+## 사용 환경
+
+1. android smart phone
+
+2. android tablet
+
+3. (:web)
+
+- 스마트폰 환경의 세로, 가로 및 태블릿 환경에서의 세로, 가로를 모두 지원 가능해야 한다
+    - 안드로이드 태블릿은 중점 기준 `├`같은 형태로 3분할을 지원하기때문에 스마트폰 가로와 유사한 화면이 자연스럽게 만들어지게 된다
+    - 심지어 팝업창도 존재해서 그냥 뭐든 다 잘 해야한다
+
+## 페이지 및 기능
+
+### 기능 페이지
+
+- 로그인
+    - 입력 : id
+    - 입력 : pw
+    - 버튼 : 로그인
+    - 소셜로그인
+    - 게스트로
+    - 회원가입
+
+
+- 회원가입
+    - 뒤로가기
+    - 입력 : id
+    - 입력 : pw
+    - 입력 : cf
+    - 버튼 : 회원가입
+
+
+- 대시보드
+    - 카드 : 동기부여
+
+
+- 타임 트래커
+
+
+- 플래닝
+
+
+- 복습 알림
+
+
+
+### 설정 페이지
+
+- 유저 설정
+
+- 동기부여 커스터마이징
+
+## 
+
+
+
+
+
+
+
+---
+
 ┌ ┬ ┐   ┌─┬─┐
 ├ ┼ ┤   │ │ │
 └ ┴ ┘   └─┴─┘

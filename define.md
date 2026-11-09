@@ -171,8 +171,14 @@
 ### web server
 
 - [?] nginx
+    - for multi spring boot container
+        - 단일 스프링부트 서버면 톰캣과 스프링 시큐리티로 https 강제까지 다 대응 가능하다
     - for flutter web
 
+- DNS, hosting
+    - [duckdns.org](https://www.duckdns.org) : `kiryud.duckdns.org` letsencrypt 공식 지원이라 certbot 가능
+    - [github student developer pack](https://education.github.com/pack) : `kiryud.me`
+    - `cloudflare` : 도메인은 필요하지만 홍콩, 일본쪽 알아보면 온프레미스 기준 무료 호스팅 제한적으로 가능하다
 
 ### web application server
 
@@ -194,6 +200,7 @@
 - [?] nosql
     - no reason for using or not at backend server
     - client가 SQLite기반으로 만든 file을 backend server에서 해석해야만 하는 이유가 아직 없어보임
+        - 웹 대시보드라도 건들려고 한다면 필요할수도.....? 선생, 학생 계정 분리해서 학생 관리라도 하나?
 
 ---
 
