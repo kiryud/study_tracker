@@ -8,10 +8,10 @@
     3. 기본적인 파일 생성 및 최소한의 코드 작성
         1. 테마
         2. 프리뷰
-        2. 페이지
-        3. 라우터
-        4. config (api host)
-        5. 프로바이더
+        3. 페이지
+        4. 라우터
+        5. config (api host)
+        6. 프로바이더
     4. 프로바이더, 라우터, 테마 연동
         - at main.dart
 
@@ -51,7 +51,7 @@ flutter pub get
         - app_page.dart : enum을 통해 페이지 목록 관리
         - app_router.dart : enum을 인자로 받아 go router 동작
     - config : 앱의 설정 수준의 관리 요소
-        - api_host_string.dart : 백엔드의 호스트 url 관리 객체
+        - api_host_url.dart : 백엔드의 호스트 url 관리 객체
 - core : 어디에서도 사용할 수 있는 공통 요소
     - enum : 어디서나 가져다 쓸 enum
     - extensions : snack bar같은 정해진 구조에서 내가 반복적으로 사용하는 요소 자동화
@@ -72,7 +72,7 @@ flutter pub get
         - dashboard
 - main.dart : 프로바이더, 테마, 라우터를 명시할 최상단
 
-### 테마, 라우터, 프로바이저 생성 및 연동
+### 테마, 라우터, 프로바이더 생성 및 연동
 
 - app_theme.dart
 
@@ -95,7 +95,7 @@ class AppTheme {
 final class AppThemePreview extends Preview {
     const AppThemePreview({}) : super(theme: AppThemePreview.themeBuilder);
 
-    static PreviewThemeDate themeBuilder() => PreviewThemeData(
+    static PreviewThemeData themeBuilder() => PreviewThemeData(
         materialLight: AppTheme.light,
         materialDark: AppTheme.dark,
     );
@@ -152,13 +152,13 @@ class ApiHostUrl {
 void main() {
   runApp(
     const ProviderScope(
-      child: UniTaskApp()
+      child: StudyTrackerApp()
     )
   );
 }
 
-class UniTaskApp extends StatelessWidget {
-  const UniTaskApp({super.key});
+class StudyTrackerApp extends StatelessWidget {
+  const StudyTrackerApp({super.key});
 
   @override
   Widget build(BuildContext context) {
