@@ -2,11 +2,24 @@
 
 ## flutter
 
+-  sequence
+    1. 프로젝트 생성, 패키지 설치
+    2. directory tree 구성
+    3. 기본적인 파일 생성 및 최소한의 코드 작성
+        1. 테마
+        2. 프리뷰
+        2. 페이지
+        3. 라우터
+        4. config (api host)
+        5. 프로바이더
+    4. 프로바이더, 라우터, 테마 연동
+        - at main.dart
+
 ### init project
 
 - 개발 환경 설정
     - [플러터 설치](https://docs.flutter.dev/install)
-    - `flutter doctor` 및 요구조건 설정
+    - `flutter doctor` 을 통한 환경 설정
 
 - 프로젝트 생성
 
@@ -15,14 +28,14 @@ cd PROJECT_HOME/frontend
 flutter create --org dev.kiryud study_tracker
 ```
 
-- 사용할 라이브러리 명시
+- 사용할 라이브러리 설정
 
 ```pubspec.yml
 dependencies:
     ...
 ```
 
-- 라이브러리 설정
+- 라이브러리 설치
 
 ```shell
 flutter pub get
@@ -53,9 +66,111 @@ flutter pub get
         - service : sqlite crud service
 - models : data class 모델
 - ui : user interface
-    - page : 각 페이지
+    - pages : 각 페이지
     - widget : 페이지에서 사용할 여러 위젯
         - common
         - dashboard
 - main.dart : 프로바이더, 테마, 라우터를 명시할 최상단
+
+### 테마, 라우터, 프로바이저 생성 및 연동
+
+- app_theme.dart
+
+```dart
+class AppTheme {
+    static ThemeData get light =>
+        ThemeData.light(
+            useMaterial3: true,
+        ).copyWith();
+    static ThemeData get dark =>
+        ThemeData.dark(
+            useMaterial3: true,
+        ).copyWith();
+}
+```
+
+- preview.dart (`widget_previews`)
+
+```dart
+final class AppThemePreview extends Preview {
+    const AppThemePreview({}) : super(theme: AppThemePreview.themeBuilder);
+
+    static PreviewThemeDate themeBuilder() => PreviewThemeData(
+        materialLight: AppTheme.light,
+        materialDark: AppTheme.dark,
+    );
+}
+```
+
+- app_page.dart
+    - 각 page는 `ui/pages/$NAME/$NAME_page.dart`에서 stateless widget(stl)로 선언
+
+```dart
+enum AppPage {
+    login, signup, home
+}
+
+extension AppPageExtention on AppPage {
+  String get path => '/$name';
+
+  Widget get page => switch (this) {
+    .login => const LoginPage(),
+    .signup => const SignupPage(),
+    .home => const HomePage(),
+  };
+}
+```
+
+- app_router.dart (`go_router`)
+
+```dart
+final appRouter = GoRouter(
+  initialLocation: AppPage.login.path, // 첫 페이지의 이름 지정
+  routes: AppPage.values.map((e) {
+    return GoRoute(
+      name: e.name,
+      path: e.path,
+      builder: (context, state) => e.page,
+    );
+  }).toList(),
+);
+```
+
+- api_host_url.dart
+
+```dart
+class ApiHostUrl {
+    static const apiHostUrl = 'https://[HOST]/[PATH]';
+}
+```
+
+- main.dart (`flutter_riverpod`)
+
+```dart
+void main() {
+  runApp(
+    const ProviderScope(
+      child: UniTaskApp()
+    )
+  );
+}
+
+class UniTaskApp extends StatelessWidget {
+  const UniTaskApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp.router(
+      themeMode: .system,
+      theme: AppTheme.light,
+      darkTheme: AppTheme.dark,
+      routerConfig: appRouter,
+    );
+  }
+}
+```
+
+###
+
+
 
