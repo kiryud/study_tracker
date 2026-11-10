@@ -137,6 +137,8 @@ final appRouter = GoRouter(
 ```
 
 - api_host_url.dart
+    - HOST : 미정 (무료 도메인 중 하나)
+    - PATH : 'api/v1/'
 
 ```dart
 class ApiHostUrl {
