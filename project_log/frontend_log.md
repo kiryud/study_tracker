@@ -172,7 +172,6 @@ class StudyTrackerApp extends StatelessWidget {
 }
 ```
 
-###
 
 
 
