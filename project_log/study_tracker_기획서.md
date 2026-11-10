@@ -32,7 +32,7 @@ Study Tracker (가칭)
   - 로컬 데이터베이스: SQLite (오프라인 우선 데이터 저장 및 계정별 로컬 데이터 분리 관리)
   - 백그라운드 서비스: Android Foreground Service 및 상단 알림(Notification) / 잠금화면 연동 타이머
 - **백엔드 및 인증 (Backend & Auth)**
-  - 서버 프레임워크: Kotlin + Spring Boot 기반 REST API 서버 ([백엔드 포트폴리오 서버](https://github.com/kiryud/test_project_kt_sb))
+  - 서버 프레임워크: Kotlin + Spring Boot 기반 REST API 서버 ([백엔드 포트폴리오 서버](https://github.com/kiryud/test_project_kt_sb) 참고)
   - 인증 방식: 자체 ID/PW 인증(개인정보 최소화) 및 OAuth 2.0 / OIDC (JWT 기반) 소셜 로그인
 
 ## 2. 현황 및 문제 정의
