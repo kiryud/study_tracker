@@ -56,7 +56,7 @@ dependencies:
     go_router: ^17.2.0
     flutter_riverpod: ^3.3.1
     shared_preferences: ^2.5.5
-    intl: 
+    intl:
 
     # device preview (최대한 가볍게 태블릿, 분할화면 테스트)
     device_preview: ^3.0.0
@@ -223,7 +223,7 @@ class ApiHostUrl {
 
 ```dart
 void main() {
-    DevicePreciew.enable();
+    DevicePreciew.enable(); // device_preciew v3
 
     runApp(
         const ProviderScope(
