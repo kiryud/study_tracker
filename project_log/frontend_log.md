@@ -14,6 +14,7 @@
         6. 프로바이더
     4. 프로바이더, 라우터, 테마 연동
         - at main.dart
+    
 
 ### init project
 
@@ -32,6 +33,8 @@ flutter create --org dev.kiryud study_tracker
 ```
 
 - 사용할 라이브러리 설정
+
+> 각 라이브러리 버전들의 호환성은 검증되지 않은 상태임
 
 ```yml pubspec.yml
 name: study_tracker
@@ -55,11 +58,16 @@ dependencies:
     http: # 충돌 가능성때문에 버전 명시 비추천
     go_router: ^17.2.0
     flutter_riverpod: ^3.3.1
-    shared_preferences: ^2.5.5
+    shared_preferences: ^2.5.5 # 평문 설정 정보 (딱히 rdb에 없어도 될 것)
+    flutter_secure_storage: ^11.2.0 # 우리 서버 액세스 토큰 보관소
     intl:
 
     # device preview (최대한 가볍게 태블릿, 분할화면 테스트)
     device_preview: ^3.0.0
+
+    # local database (SQLite)
+    sqflite: ^2.4.6
+    path: ^1.9.1
 
 
 dev_dependencies:
@@ -215,7 +223,7 @@ final appRouter = GoRouter(
 
 ```dart
 class ApiHostUrl {
-    static const apiHostUrl = 'https://[HOST]/[PATH]';
+    static const apiHostUrl = 'https://[HOST]/[API_PATH]';
 }
 ```
 
@@ -247,6 +255,25 @@ class StudyTrackerApp extends StatelessWidget {
 }
 ```
 
+### provider, sqlite, router를 사용하는 목적 정리
 
+- provider 사용하기
+    - provider
+        - DI 주입 및 state 공급
+    - service
+        - 비즈니스 로직 (file io / network io)
 
+- sqlite
+    - open을 통해 가져온 db를 다룸
+        - 생성시 `onCreate`에 연결된 query 실행
+        - 버전 업데이트시 `onUpgrade`에 연결된 query 실행
+    - curd : 인자로 table, 조건 및 data(map)를 넘겨 작업 수행
+
+- router
+    - `ShellRoute`를 활용해 다른 형태의 scaffold를 가진 페이지를 나누어 개발 가능
+        - login, signup page에는 app bar나 nevigation이 필요 없음
+        - dashboard, planner는 app bar를 공유함
+        - nevigaion은 페이지마다 다를 수 있음
+
+### ???
 
