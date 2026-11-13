@@ -231,7 +231,7 @@ class ApiHostUrl {
 
 ```dart
 void main() {
-    DevicePreciew.enable(); // device_preciew v3
+    DevicePreview.enable(); // device_preview v3
 
     runApp(
         const ProviderScope(
