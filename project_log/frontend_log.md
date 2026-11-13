@@ -191,7 +191,7 @@ enum AppPage {
     login, signup, home
 }
 
-extension AppPageExtention on AppPage {
+extension AppPageExtension on AppPage {
     String get path => '/$name';
 
     Widget get page => switch (this) {
@@ -267,13 +267,13 @@ class StudyTrackerApp extends StatelessWidget {
     - open을 통해 가져온 db를 다룸
         - 생성시 `onCreate`에 연결된 query 실행
         - 버전 업데이트시 `onUpgrade`에 연결된 query 실행
-    - curd : 인자로 table, 조건 및 data(map)를 넘겨 작업 수행
+    - crud : 인자로 table, 조건 및 data(map)를 넘겨 작업 수행
 
 - router
     - `ShellRoute`를 활용해 다른 형태의 scaffold를 가진 페이지를 나누어 개발 가능
-        - login, signup page에는 app bar나 nevigation이 필요 없음
+        - login, signup page에는 app bar나 navigation이 필요 없음
         - dashboard, planner는 app bar를 공유함
-        - nevigaion은 페이지마다 다를 수 있음
+        - navigation은 페이지마다 다를 수 있음
 
 ### ???
 
