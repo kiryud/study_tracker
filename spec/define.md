@@ -133,6 +133,9 @@
 
 ## backend
 
+1. 
+2. 
+
 ### architecture
 
 - [Y] monolithic architecture
