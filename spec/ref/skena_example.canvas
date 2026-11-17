@@ -1,0 +1,140 @@
+{
+  "nodes": [
+    {
+      "id": "group-core",
+      "type": "group",
+      "label": "1. 캔버스 핵심 노드 및 탐색 테스트",
+      "x": -40,
+      "y": -60,
+      "width": 1060,
+      "height": 680,
+      "color": "5",
+      "nodeLabel": "G1"
+    },
+    {
+      "id": "node-welcome",
+      "type": "text",
+      "x": 0,
+      "y": 0,
+      "width": 440,
+      "height": 260,
+      "color": "4",
+      "text": "# 🚀 Skena 실습 보드\n\n이 파일은 **JSON Canvas 1.0** 표준 스펙으로 작성된 `.canvas` 예제입니다.\n\n### 💡 바로 해보기\n1. 노드를 클릭한 뒤 **`h` / `j` / `k` / `l`** 키로 포커스를 이동해보세요.\n2. **`g`** 키를 누르면 연결된 화살표에 라벨이 뜨고, 해당 키를 눌러 즉시 점프합니다.\n3. **`i`** 키를 누르면 내부 마크다운을 바로 편집할 수 있습니다 (`Esc`로 종료).",
+      "nodeLabel": "N1"
+    },
+    {
+      "id": "node-math-md",
+      "type": "text",
+      "x": 540,
+      "y": 0,
+      "width": 440,
+      "height": 260,
+      "color": "6",
+      "text": "## 📐 수식(KaTeX) & 코드 프리뷰\n\nSkena는 인라인 수식($O(N \\log N)$)과 블록 수식을 SVG로 즉시 렌더링합니다.\n\n$$\\text{Throughput} = \\frac{N_{\\text{events}}}{\\Delta t}$$\n\n```c\n// 이벤트 루프 의사코드\nint nev = kevent(kq, NULL, 0, evlist, MAX_EVENTS, NULL);\nfor (int i = 0; i < nev; i++) {\n    dispatch(&evlist[i]);\n}\n```",
+      "nodeLabel": "N2"
+    },
+    {
+      "id": "node-shortcuts",
+      "type": "text",
+      "x": 0,
+      "y": 340,
+      "width": 440,
+      "height": 240,
+      "color": "2",
+      "text": "## ⌨️ 빠른 노드 확장 & 조작\n\n* **`Ctrl + Shift + L`** (또는 화살표): 우측에 새 연결 노드를 만들고 즉시 입력 모드 진입\n* **`Alt + X` → `h/j/k/l`**: 원하는 방향으로 노트/코드/파일 노드 메뉴 열기\n* **`Space`**: 현재 노드를 핀(Pin) 고정한 뒤 `Shift + H/J/K/L`로 격자 이동\n* **`yy` → `Ctrl + V`**: 현재 노드 복제",
+      "nodeLabel": "N3"
+    },
+    {
+      "id": "node-ai-guide",
+      "type": "text",
+      "x": 540,
+      "y": 340,
+      "width": 440,
+      "height": 240,
+      "color": "3",
+      "text": "## 🤖 하단 AI 컴패니언 연동\n\n* **`Alt + I`**: 캔버스 ↔ 하단 AI 채팅 입력창 포커스 전환\n* **`Alt + \\``**: AI 대화 내역 접기 / 펼치기\n* 현재 포커스된 노드와 **1-hop 연결 노드**의 컨텍스트가 자동으로 전달됩니다.\n* 답변 하단의 **Add to canvas**를 누르면 새 노드로 옆에 붙습니다.",
+      "nodeLabel": "N4"
+    },
+    {
+      "id": "node-spec-link",
+      "type": "link",
+      "url": "https://jsoncanvas.org/spec/1.0/",
+      "x": 1080,
+      "y": 0,
+      "width": 420,
+      "height": 260,
+      "nodeLabel": "L1"
+    },
+    {
+      "id": "node-tip-paste",
+      "type": "text",
+      "x": 1080,
+      "y": 340,
+      "width": 420,
+      "height": 240,
+      "color": "1",
+      "text": "## 📋 스마트 붙여넣기 (`Ctrl + V`)\n\n캔버스 빈 공간이나 노드를 선택한 상태에서 붙여넣기를 해보세요:\n\n1. **탐색기 파일 드래그 앤 드롭**: 실시간 동기화되는 파일 노드로 추가\n2. **클립보드 이미지/스크린샷**: 이미지 노드로 즉시 생성\n3. **URL 텍스트**: 웹 링크 노드로 변환",
+      "nodeLabel": "N5"
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-1",
+      "fromNode": "node-welcome",
+      "fromSide": "right",
+      "toNode": "node-math-md",
+      "toSide": "left",
+      "color": "4",
+      "label": "l 키로 이동"
+    },
+    {
+      "id": "edge-2",
+      "fromNode": "node-welcome",
+      "fromSide": "bottom",
+      "toNode": "node-shortcuts",
+      "toSide": "top",
+      "color": "2",
+      "label": "j 키로 이동"
+    },
+    {
+      "id": "edge-3",
+      "fromNode": "node-shortcuts",
+      "fromSide": "right",
+      "toNode": "node-ai-guide",
+      "toSide": "left",
+      "color": "3",
+      "label": "AI 워크플로우"
+    },
+    {
+      "id": "edge-4",
+      "fromNode": "node-math-md",
+      "fromSide": "bottom",
+      "toNode": "node-ai-guide",
+      "toSide": "top",
+      "color": "6",
+      "label": "1-hop 컨텍스트 참조"
+    },
+    {
+      "id": "edge-5",
+      "fromNode": "node-math-md",
+      "fromSide": "right",
+      "toNode": "node-spec-link",
+      "toSide": "left",
+      "label": "공식 스펙 문서"
+    },
+    {
+      "id": "edge-6",
+      "fromNode": "node-ai-guide",
+      "fromSide": "right",
+      "toNode": "node-tip-paste",
+      "toSide": "left",
+      "color": "1",
+      "label": "외부 리소스 연결"
+    }
+  ],
+  "viewport": {
+    "x": 203.98194107698674,
+    "y": 322.3487285148325,
+    "zoom": 0.7482187036739313
+  }
+}
