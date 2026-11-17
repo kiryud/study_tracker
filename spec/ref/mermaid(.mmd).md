@@ -2,7 +2,7 @@
 
 > - 스펙(Spec) 문서에서 화면 구조, 상태 전이, 데이터 흐름, DB 스키마를 정의할 때 복붙해 쓰는 기본 문법 정리
 > - from gemini argon
-> - `Markdown Preview Mermaid Support`
+> - extension : `Markdown Preview Mermaid Support`
 
 ## 0. 공통 규칙 및 문법 에러 방지 수칙
 
