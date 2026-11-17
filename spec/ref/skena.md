@@ -21,7 +21,7 @@ VSIX 수동 설치: VS Marketplace - Skena 우측의 Download Extension에서 .v
 
 마켓플레이스 경로 변경: 설정(Ctrl + ,)에서 marketplace를 검색해 Item URL(https://marketplace.visualstudio.com/items)과 Gallery URL(https://marketplace.visualstudio.com/_apis/public/gallery)을 등록한 뒤 재시작하여 검색·설치합니다.
 
-- 1.3 `.gitignore`에 `.vscode` `.mcp.json` 추가
+- 1.3 `.gitignore`에 `.vscode` `.mcp.json` `*.skena.json` 추가
 
 
 2. 캔버스 열기 및 파일·노드 추가 (Paste & Drop)
