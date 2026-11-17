@@ -133,8 +133,8 @@
 
 ## backend
 
-1. 
-2. 
+1. BaaS인 supabase를 컨테이너로 간단한 백엔드로 사용하기
+2. 제대로 된 백엔드 API서버 구축
 
 ### architecture
 
