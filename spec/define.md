@@ -187,10 +187,12 @@ flowchart LR
             direction TB
             Nginx["nginx (:80, :443)"]
             SpringBoot["spring boot (:8080)"]
-            Postgres[("postgresSQL (:5432)")]
+            Postgres["postgresSQL (:5432)"]
+            database[("database")]
 
             Nginx <--> SpringBoot
             SpringBoot <--> Postgres
+            Postgres <--> database
         end
     end
 
