@@ -173,6 +173,32 @@
 └───────────────────────┘
 ```
 
+```mermaid
+flowchart LR
+    subgraph Client["Client"]
+        direction TB
+        FlutterApp["flutter app (API: https://DOMAIN/api/v1/*)"]
+        FlutterWeb["flutter web (optional) (URI: https://DOMAIN/PATH)"]
+    end
+
+    subgraph Server["monolithic 3tier backend api server"]
+        direction TB
+        subgraph Docker["docker network bridge (80:80, 443:443)"]
+            direction TB
+            Nginx["nginx (:80, :443)"]
+            SpringBoot["spring boot (:8080)"]
+            Postgres[("postgresSQL (:5432)")]
+
+            Nginx <--> SpringBoot
+            SpringBoot <--> Postgres
+        end
+    end
+
+    FlutterApp <-->|"RESTful API (/api/*)"| Nginx
+    FlutterWeb <-->|"Web (/)"| Nginx
+    FlutterWeb <-->|"RESTful API (/api/*)"| Nginx
+```
+
 ### web server
 
 - [?] nginx
