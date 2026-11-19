@@ -1,4 +1,6 @@
-# planning strategy
+# data structure 
+
+> (from planning strategy)
 
 > - 단순한 학습 예정 항목의 나열이 아닌 분석 가능한 `계획 - 실행 - 회고 루프`와 학습을 위한 시간·공간을 관리하는 방법론
 > - 의도와 형태, 그리고 이를 뒷받침하는 데이터/화면 기준을 명확하게 서술한 전략 문서
