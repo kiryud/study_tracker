@@ -252,3 +252,49 @@ classDiagram
 
     TimerNotifier --> TimerState : 상태 관리
 ```
+
+---
+
+## 6. Git Graph (`gitGraph`) — 브랜치 & 병합 흐름
+
+### 핵심 문법
+- **방향 선언**: `gitGraph` (기본 가로 `LR`), 세로 방향은 `gitGraph TB:` 또는 `gitGraph BT:`
+- **커밋 생성**: `commit` / `commit id: "커밋명"` / `commit tag: "v1.0.0"`
+- **커밋 강조**: `commit type: HIGHLIGHT` (`NORMAL`, `REVERSE`, `HIGHLIGHT`)
+- **브랜치 생성 및 이동**
+    - `branch 브랜치명` : 현재 커밋에서 새 브랜치 생성 후 이동
+    - `checkout 브랜치명` (또는 `switch 브랜치명`) : 기존 브랜치로 이동
+- **병합 & 체리픽**
+    - `merge 브랜치명` : 현재 브랜치로 대상 브랜치 병합 (`tag: "..."` 병기 가능)
+    - `cherry-pick id: "커밋ID"` : 특정 커밋만 현재 브랜치로 가져오기
+
+### 복붙용 템플릿 (기능 개발 & 릴리즈 흐름)
+
+```mermaid
+gitGraph
+    commit id: "init"
+    branch develop
+    checkout develop
+    commit id: "setup project"
+
+    branch feat/timer
+    checkout feat/timer
+    commit id: "timer ui"
+    commit id: "foreground service"
+
+    checkout develop
+    merge feat/timer
+    commit id: "integrate"
+
+    checkout main
+    merge develop tag: "v0.1.0"
+
+    branch hotfix
+    checkout hotfix
+    commit id: "fix crash" type: HIGHLIGHT
+
+    checkout main
+    merge hotfix tag: "v0.1.1"
+    checkout develop
+    merge hotfix
+```
