@@ -3,6 +3,7 @@
 > - 스펙(Spec) 문서에서 화면 구조, 상태 전이, 데이터 흐름, DB 스키마를 정의할 때 복붙해 쓰는 기본 문법 정리
 > - from gemini argon
 > - extension : `Markdown Preview Mermaid Support`
+> - Link : [Mermaid](https://mermaid.js.org/)
 
 ## 0. 공통 규칙 및 문법 에러 방지 수칙
 
@@ -297,4 +298,117 @@ gitGraph
     merge hotfix tag: "v0.1.1"
     checkout develop
     merge hotfix
+```
+
+---
+
+## 7. Packet Diagram (`packet-beta`) — 비트 / 패킷 구조
+
+### 핵심 문법
+- **선언**: `packet-beta` (기본 32비트 폭, 0부터 비트 인덱스 시작)
+- **필드 정의**
+    - `시작비트-끝비트: "필드명"` (예: `0-31: "unix_ts_ms"`)
+    - 단일 비트: `64-64: "flag"` 또는 `+1: "flag"`
+- **제목**: 첫 줄에 `title "제목"` 표기 가능
+
+### 복붙용 템플릿 (UUIDv4 vs UUIDv7 128-bit 구조 비교)
+
+#### UUIDv4 (완전 랜덤 기반)
+```mermaid
+packet-beta
+title "UUIDv4 (128 bits)"
+0-31: "random_a (32 bits)"
+32-47: "random_a (16 bits)"
+48-51: "ver (0100)"
+52-63: "random_b (12 bits)"
+64-65: "var (10)"
+66-95: "random_c (30 bits)"
+96-127: "random_c (32 bits)"
+```
+
+#### UUIDv7 (Unix Timestamp + 랜덤, 시간순 정렬 가능)
+```mermaid
+packet-beta
+title "UUIDv7 (128 bits, RFC 9562)"
+0-31: "unix_ts_ms (high 32 bits)"
+32-47: "unix_ts_ms (low 16 bits)"
+48-51: "ver (0111)"
+52-63: "rand_a (12 bits)"
+64-65: "var (10)"
+66-95: "rand_b (high 30 bits)"
+96-127: "rand_b (low 32 bits)"
+```
+
+---
+
+## 8. Mindmap (`mindmap`) — 계층 마인드맵
+
+### 핵심 문법
+- **선언**: `mindmap`
+- **계층 표현**: 화살표 없이 **들여쓰기(Indentation, 보통 2칸 또는 4칸)**만으로 부모-자식 관계 표현
+- **노드 모양**
+    - `root((루트))` : 원형 (중심 루트)
+    - `id["사각형"]` : 사각형
+    - `id("둥근 사각형")` : 둥근 사각형
+    - `id{{"육각형"}}` : 육각형
+    - 들여쓰기만 하고 기호 없이 일반 텍스트 작성도 가능
+
+### 복붙용 템플릿 (다계층 노드 트리 예시)
+
+```mermaid
+mindmap
+  root(("Study Tracker"))
+    개인["개인 (Personal)"]
+      수면("수면 [METRIC]")
+      운동("운동 [TIME]")
+      체중("체중 [METRIC]")
+    업무["업무 (Work)"]
+      알바("알바 [TIME]")
+      프로젝트("프로젝트 [GROUP]")
+        설계("설계 [CHECK]")
+        구현("구현 [TIME]")
+    학습["학습 (Study)"]
+      전공("전공 [GROUP]")
+        OS("OS [GROUP]")
+          3장("3장 프로세스 [TIME]")
+          4장("4장 스레드 [CHECK]")
+      어학("어학 [TIME]")
+```
+
+---
+
+## 9. TreeView (`treeView-beta`) — 디렉토리 / 파일 트리 구조
+
+> Mermaid v11.14.0+ 지원 (기존 `Markdown Preview Mermaid Support` 구버전 엔진에서는 렌더링되지 않을 수 있음)
+
+### 핵심 문법
+- **선언**: `treeView-beta`
+- **계층 표현**: 들여쓰기(Indentation)만으로 부모-자식 디렉토리 구조 표현
+- **라벨 규칙**: 공백이 없으면 따옴표 없이 작성(`src/`), 공백이 포함되면 큰따옴표(`"my folder/"`) 사용
+- **부가 기능**
+    - `## 주석` : 노드 오른쪽에 인라인 설명 추가
+    - `:::highlight` : 특정 노드 강조
+    - `icon(none)` / `icon(패키지:아이콘)` : 아이콘 표시 제어 (`config.treeView.showIcons: true` 필요)
+
+### 복붙용 템플릿 (프로젝트 디렉토리 구조 예시)
+
+```mermaid
+treeView-beta
+  study_tracker/
+    frontend/
+      flutter/
+        lib/
+          app/ ## theme, router, config
+          core/ ## enum, extensions, result.dart
+          feature/ ## remote / local CRUD
+          models/
+          ui/ ## pages, widget
+        pubspec.yaml
+    backend/
+      spring_boot/
+      rdbms/
+      docker-compose.yml
+      .env.example
+    .gitignore
+    Makefile
 ```
